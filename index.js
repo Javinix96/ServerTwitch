@@ -21,6 +21,8 @@ app.use(express.raw({          // Need raw message body for signature verificati
     type: 'application/json'
 }))  
 
+let WaterDrops = [];
+
 
 app.post('/eventsub', (req, res) => {
     let secret = getSecret();
@@ -38,7 +40,7 @@ app.post('/eventsub', (req, res) => {
 
             console.log(`Event type: ${notification.subscription.type}`);
             console.log(JSON.stringify(notification.event, null, 4));
-            
+            WaterDrops.push(notification.event); 
             res.sendStatus(204);
         }
         else if (MESSAGE_TYPE_VERIFICATION === req.headers[MESSAGE_TYPE]) {
@@ -61,6 +63,18 @@ app.post('/eventsub', (req, res) => {
         res.sendStatus(403);
     }
 })
+
+app.get('WaterDrops', (req,res) =>
+{
+    res.send(JSON.stringify(WaterDrops));
+
+});
+
+
+
+
+
+
   
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
