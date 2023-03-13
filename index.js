@@ -40,7 +40,12 @@ app.post('/eventsub', (req, res) => {
 
             console.log(`Event type: ${notification.subscription.type}`);
             console.log(JSON.stringify(notification.event, null, 4));
-            WaterDrops.push(notification.event); 
+
+            let bodyRes = {
+                streamer: notification.event.user_login,
+                title: notification.event.title
+            }
+            WaterDrops.push(bodyRes); 
             res.sendStatus(204);
         }
         else if (MESSAGE_TYPE_VERIFICATION === req.headers[MESSAGE_TYPE]) {
