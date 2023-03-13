@@ -45,7 +45,7 @@ app.post('/eventsub', (req, res) => {
             let bodyRes = {
                 streamer: notification.event.user_login,
                 title: notification.event.reward.title,
-                isNew: "New"
+                mark: "New"
             }
             WaterDrops.push(bodyRes); 
             res.sendStatus(204);
