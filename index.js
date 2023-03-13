@@ -1,4 +1,5 @@
-const crypto = require('crypto')
+const crypto = require('crypto');
+const { json } = require('express');
 const express = require('express');
 const app = express();
 const port = 443;
@@ -45,7 +46,7 @@ app.post('/eventsub', (req, res) => {
                 streamer: notification.event.user_login,
                 title: notification.event.reward.title
             }
-            WaterDrops.push(bodyRes); 
+            WaterDrops.push(JSON.stringify(bodyRes) ); 
             res.sendStatus(204);
         }
         else if (MESSAGE_TYPE_VERIFICATION === req.headers[MESSAGE_TYPE]) {
