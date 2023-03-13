@@ -73,7 +73,7 @@ app.post('/eventsub', (req, res) => {
 app.get('/WaterDrops', (req,res) =>
 {
     res.send(JSON.stringify(WaterDrops));
-    WaterDrops = [];
+    // WaterDrops = [];
 });
 
 
