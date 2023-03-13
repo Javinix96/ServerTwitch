@@ -46,7 +46,7 @@ app.post('/eventsub', (req, res) => {
                 streamer: notification.event.user_login,
                 title: notification.event.reward.title
             }
-            WaterDrops.push(JSON.stringify(bodyRes) ); 
+            WaterDrops.push(bodyRes); 
             res.sendStatus(204);
         }
         else if (MESSAGE_TYPE_VERIFICATION === req.headers[MESSAGE_TYPE]) {
