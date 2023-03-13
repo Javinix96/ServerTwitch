@@ -44,7 +44,8 @@ app.post('/eventsub', (req, res) => {
 
             let bodyRes = {
                 streamer: notification.event.user_login,
-                title: notification.event.reward.title
+                title: notification.event.reward.title,
+                isNew: "New"
             }
             WaterDrops.push(bodyRes); 
             res.sendStatus(204);
@@ -73,6 +74,7 @@ app.post('/eventsub', (req, res) => {
 app.get('/WaterDrops', (req,res) =>
 {
     res.send(JSON.stringify(WaterDrops));
+    WaterDrops.forEach( c => c.isNew = "Old");
     // WaterDrops = [];
 });
 
