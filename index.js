@@ -74,7 +74,7 @@ app.post('/eventsub', (req, res) => {
 app.get('/WaterDrops', (req,res) =>
 {
     res.send(JSON.stringify(WaterDrops));
-    WaterDrops.forEach( c => c.isNew = "Old");
+    WaterDrops.forEach( c => c.mark = "Old");
     // WaterDrops = [];
 });
 
