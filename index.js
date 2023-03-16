@@ -67,7 +67,7 @@ app.post('/eventsub', (req, res) => {
            WaterDrops.push(bodyRes);
            if (res2 != null)
            {
-            res.write(`data: ${JSON.stringify(WaterDrops)}\n\n`)
+            res2.write(`data: ${JSON.stringify(WaterDrops)}\n\n`)
            }
            res.sendStatus(204);
         }
