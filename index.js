@@ -30,14 +30,22 @@ app.get('/Events', (req, res) => {
     res.setHeader('Content-Type', 'text/event-stream')
     res.setHeader('Access-Control-Allow-Origin', '*')
     console.log('Client connected')
-    res2 = res;
+    const intervalId = setInterval(() => {
+        
+        for(let i = 0; i < WaterDrops.length; i++){
+            if (WaterDrops[i].Mark == 'New')
+            {
+                res.write(`data: ${JSON.stringify(WaterDrops[i])}\n\n`);
+                WaterDrops = [];
+                break;
+            }
+        } 
 
-
-
-    // res.write(`data: ${JSON.stringify(WaterDrops)}\n\n`)
+      }, 500)
     
-    res.on('close', () => {
+      res.on('close', () => {
         console.log('Client closed connection')
+        clearInterval(intervalId)
         res.end()
       })
   })
