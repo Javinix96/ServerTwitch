@@ -30,8 +30,7 @@ app.get('/Events', (req, res) => {
     res.setHeader('Content-Type', 'text/event-stream')
     res.setHeader('Access-Control-Allow-Origin', '*')
     console.log('Client connected')
-    const intervalId = setInterval(() => {
-        
+    const intervalId = setInterval(() => {      
         for(let i = 0; i < WaterDrops.length; i++){
             if (WaterDrops[i].mark == 'New')
             {
