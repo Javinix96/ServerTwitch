@@ -32,7 +32,7 @@ app.get('/Events', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*')
   
     console.log(WaterDrops);
-    res.write(JSON.stringify(WaterDrops));
+    res.write(JSON.stringify(WaterDrops).toString());
 
     res.on('close', () => {
       console.log('Client closed connection')
