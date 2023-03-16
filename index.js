@@ -73,11 +73,6 @@ app.post('/eventsub', (req, res) => {
                 mark: "New"
             }
            WaterDrops.push(bodyRes);
-           if (res2 != null)
-           {
-
-            res2.write(`data: ${JSON.stringify(WaterDrops)}\n\n`)
-           }
            res.sendStatus(204);
         }
         else if (MESSAGE_TYPE_VERIFICATION === req.headers[MESSAGE_TYPE]) {
