@@ -31,6 +31,7 @@ app.get('/Events', (req, res) => {
     res.setHeader('Content-Type', 'text/event-stream')
     res.setHeader('Access-Control-Allow-Origin', '*')
   
+    console.log(WaterDrops);
     res.write(JSON.stringify(WaterDrops));
 
     res.on('close', () => {
