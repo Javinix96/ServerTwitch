@@ -47,7 +47,7 @@ app.post('/eventsub', (req, res) => {
                 title: notification.event.reward.title,
                 mark: "New"
             }
-            WaterDrops.push(bodyRes); 
+           res.write(JSON.stringify(bodyRes));
             res.sendStatus(204);
         }
         else if (MESSAGE_TYPE_VERIFICATION === req.headers[MESSAGE_TYPE]) {
