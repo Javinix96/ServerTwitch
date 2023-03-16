@@ -33,7 +33,7 @@ app.get('/Events', (req, res) => {
     const intervalId = setInterval(() => {
         
         for(let i = 0; i < WaterDrops.length; i++){
-            if (WaterDrops[i].Mark == 'New')
+            if (WaterDrops[i].mark == 'New')
             {
                 res.write(`data: ${JSON.stringify(WaterDrops[i])}\n\n`);
                 WaterDrops = [];
