@@ -24,6 +24,19 @@ app.use(express.raw({          // Need raw message body for signature verificati
 
 let WaterDrops = [];
 
+app.get('/Events', (req, res) => {
+    console.log('Client connected')
+    res.setHeader('Content-Type', 'text/event-stream')
+    res.setHeader('Access-Control-Allow-Origin', '*')
+  
+    res.write(JSON.stringify(WaterDrops));
+
+    res.on('close', () => {
+      console.log('Client closed connection')
+      res.end()
+    })
+  })
+
 
 app.post('/eventsub', (req, res) => {
     res.setHeader('Content-Type', 'text/event-stream')
@@ -50,7 +63,7 @@ app.post('/eventsub', (req, res) => {
                 title: notification.event.reward.title,
                 mark: "New"
             }
-           res.write(JSON.stringify(bodyRes));
+           WaterDrops.push(bodyRes);
            res.sendStatus(204);
         }
         else if (MESSAGE_TYPE_VERIFICATION === req.headers[MESSAGE_TYPE]) {
