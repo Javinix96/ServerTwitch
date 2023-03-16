@@ -28,7 +28,6 @@ app.get('/Events', (req, res) => {
     res.setHeader('Content-Type', 'text/event-stream')
     res.setHeader('Access-Control-Allow-Origin', '*')
     console.log('Client connected')
-  
     res.write(`data: ${JSON.stringify(WaterDrops)}\n\n`)
     
     res.on('close', () => {
