@@ -26,6 +26,9 @@ let WaterDrops = [];
 
 
 app.post('/eventsub', (req, res) => {
+    res.setHeader('Content-Type', 'text/event-stream')
+    res.setHeader('Content-Type', 'application/json')
+    res.setHeader('Access-Control-Allow-Origin', '*')
     let secret = getSecret();
     let message = getHmacMessage(req);
     let hmac = HMAC_PREFIX + getHmac(secret, message);  // Signature to compare
@@ -48,7 +51,7 @@ app.post('/eventsub', (req, res) => {
                 mark: "New"
             }
            res.write(JSON.stringify(bodyRes));
-            res.sendStatus(204);
+           res.sendStatus(204);
         }
         else if (MESSAGE_TYPE_VERIFICATION === req.headers[MESSAGE_TYPE]) {
             res.status(200).send(notification.challenge);
