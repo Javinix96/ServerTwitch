@@ -55,7 +55,7 @@ app.post('/eventsub', (req, res) => {
         let notification = JSON.parse(req.body);
         
         if (MESSAGE_TYPE_NOTIFICATION === req.headers[MESSAGE_TYPE]) {
-            // TODO: Do something with the event's data.
+            // TODO: Do something with the event's data. 
 
             console.log(`Event type: ${notification.subscription.type}`);
             console.log(JSON.stringify(notification.event, null, 4));
@@ -67,7 +67,7 @@ app.post('/eventsub', (req, res) => {
            WaterDrops.push(bodyRes);
            if (res2 != null)
            {
-            
+
             res2.write(`data: ${JSON.stringify(WaterDrops)}\n\n`)
            }
            res.sendStatus(204);
