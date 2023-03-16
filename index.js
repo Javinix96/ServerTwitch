@@ -59,7 +59,6 @@ app.post('/eventsub', (req, res) => {
 
             console.log(`Event type: ${notification.subscription.type}`);
             console.log(JSON.stringify(notification.event, null, 4));
-
             let bodyRes = {
                 streamer: notification.event.user_login,
                 title: notification.event.reward.title,
