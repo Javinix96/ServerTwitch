@@ -25,6 +25,8 @@ app.use(express.raw({          // Need raw message body for signature verificati
 let WaterDrops = [];
 
 app.get('/Events', (req, res) => {
+    res.setHeader('Content-Type', 'text/event-stream')
+    res.setHeader('Access-Control-Allow-Origin', '*')
     console.log('Client connected')
     res.setHeader('Content-Type', 'text/event-stream')
     res.setHeader('Access-Control-Allow-Origin', '*')
@@ -39,9 +41,6 @@ app.get('/Events', (req, res) => {
 
 
 app.post('/eventsub', (req, res) => {
-    res.setHeader('Content-Type', 'text/event-stream')
-    res.setHeader('Content-Type', 'application/json')
-    res.setHeader('Access-Control-Allow-Origin', '*')
     let secret = getSecret();
     let message = getHmacMessage(req);
     let hmac = HMAC_PREFIX + getHmac(secret, message);  // Signature to compare
