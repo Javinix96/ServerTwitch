@@ -31,7 +31,6 @@ app.get('/Events', (req, res) => {
   
     res.write(`data: ${JSON.stringify(WaterDrops)}\n\n`)
     
-    
     res.on('close', () => {
         console.log('Client closed connection')
         res.end()
