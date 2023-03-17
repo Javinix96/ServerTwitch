@@ -63,9 +63,6 @@ app.post('/eventsub', (req, res) => {
         
         if (MESSAGE_TYPE_NOTIFICATION === req.headers[MESSAGE_TYPE]) {
             // TODO: Do something with the event's data. 
-
-            console.log(`Event type: ${notification.subscription.type}`);
-            console.log(JSON.stringify(notification.event, null, 4));
             let bodyRes = {
                 streamer: notification.event.user_login,
                 title: notification.event.reward.title,
