@@ -34,7 +34,7 @@ app.get('/Events', (req, res) => {
         for(let i = 0; i < WaterDrops.length; i++){
             if (WaterDrops[i].mark == 'New')
             {
-                res.write(`data: ${JSON.stringify(WaterDrops[i])}`);
+                res.write(`data: ${JSON.stringify(WaterDrops[i])}\n\n`);
                 WaterDrops = [];
                 break;
             }
