@@ -24,6 +24,8 @@ app.use(express.raw({          // Need raw message body for signature verificati
 
 let WaterDrops = [];
 
+let res2 = null;
+
 app.get('/Events', (req, res) => {
     res.setHeader('Content-Type', 'text/event-stream')
     res.setHeader('Access-Control-Allow-Origin', '*')
@@ -32,7 +34,7 @@ app.get('/Events', (req, res) => {
         for(let i = 0; i < WaterDrops.length; i++){
             if (WaterDrops[i].mark == 'New')
             {
-                res.write(JSON.stringify(WaterDrops[i]).toString());
+                res.write(`data: ${JSON.stringify(WaterDrops[i])}`);
                 WaterDrops = [];
                 break;
             }
