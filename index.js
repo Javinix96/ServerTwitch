@@ -24,8 +24,6 @@ app.use(express.raw({          // Need raw message body for signature verificati
 
 let WaterDrops = [];
 
-let res2 = null;
-
 app.get('/Events', (req, res) => {
     res.setHeader('Content-Type', 'text/event-stream')
     res.setHeader('Access-Control-Allow-Origin', '*')
