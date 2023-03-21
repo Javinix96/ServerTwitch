@@ -37,11 +37,9 @@ app.get('/Events', (req, res) => {
                 res.write(`data: ${JSON.stringify(WaterDrops[i])}\n\n`);
                 WaterDrops = [];
                 break;
-            }else{
-                res.write(`data:\n\n`);
-            }
+            }  
         } 
-
+        res.write(`data:\n\n`);
       }, 500)
     
       res.on('close', () => {
