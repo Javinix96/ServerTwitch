@@ -40,7 +40,7 @@ app.get('/Events', (req, res) => {
             }  
         } 
         res.write(`data:\n\n`);
-      }, 500)
+      }, 4000)
     
       res.on('close', () => {
         console.log('Client closed connection')
